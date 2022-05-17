@@ -23,3 +23,5 @@ Adding triplet note support was the trickiest, since it required converting the 
 * tap tempo detection
 * easy sound file import
 * add visual metronome
+* song library
+* sets
