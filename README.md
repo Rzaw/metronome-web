@@ -14,9 +14,10 @@ Using @cwilso's [HTML5 demo metronome](http://webaudiodemos.appspot.com/metronom
 Adding triplet note support was the trickiest, since it required converting the base note interval from a 16th note to a twelvelet, which contains both eighth note and sixteenth note intervals (thanks college drumline days).  The scheduler picks out the relevant subdivisions in the polyrhythm and mutes the rest. This worked way better than simultaneously scheduling duple subdivisions and triple subdivisions, especially with the variable tempo input.
 
 
-### Setup
-1. clone the repository
-2. open `index.html` using a broswer other than Chrome (Chrome doesn't like running web workers locally apparently)
+## Project setup
+```
+npm install
+```
 
 ### Todos
 * toggle note pitches
@@ -25,3 +26,18 @@ Adding triplet note support was the trickiest, since it required converting the 
 * add visual metronome
 * song library
 * sets
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
