@@ -22,4 +22,4 @@ self.onmessage = function (e) {
 	}
 };
 
-postMessage('hi there');
+self.postMessage('hi there');
