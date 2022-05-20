@@ -2,20 +2,26 @@
   <div class="container mt-2">
     <div class="d-flex justify-content-center mb-3">
       <h1 class="me-5">Metronome</h1>
-      <button @click="play()" class="btn btn-primary">
-        {{ isPlaying ? "Pause" : "Play" }}
-      </button>
     </div>
-    <div class="d-flex justify-content-center">
-      <button @click="tempo--" class="btn btn-light px-3">-</button>
-      <input
-        type="number"
-        class="form-control mx-2 w-25"
-        v-model="tempo"
-        placeholder="Tempo"
-      />
+    <div class="d-flex justify-content-end">
+      <div><span></span></div>
+      <div class="w-75 d-flex">
+        <button @click="tempo--" class="btn btn-light px-3">-</button>
 
-      <button @click="tempo++" class="btn btn-light px-3">+</button>
+        <input
+          type="number"
+          class="form-control mx-2 w-25"
+          v-model="tempo"
+          placeholder="Tempo"
+        />
+
+        <button @click="tempo++" class="btn btn-light px-3">+</button>
+      </div>
+      <div>
+        <button @click="play()" class="btn btn-primary">
+          {{ isPlaying ? "Pause" : "Play" }}
+        </button>
+      </div>
     </div>
     <label for="tempoRange" class="form-label">Tempo range</label>
     <input
@@ -95,7 +101,15 @@
       <label for="tripletVolumeRange" class="form-label h4"
         >Triplet <small style="text-muted">{{ tripletVolume }}</small></label
       >
-      <input type="range" class="form-range" min="0" max="100" step="1" v-model="tripletVolume" id="tripletVolumeRange" />
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="100"
+        step="1"
+        v-model="tripletVolume"
+        id="tripletVolumeRange"
+      />
     </div>
     <div>
       <h2>Song Library</h2>
@@ -222,7 +236,7 @@ export default {
       osc.stop(time + this.noteLength);
     },
     calcVolume(beatVolume) {
-      return beatVolume * this.masterVolume;
+      return (beatVolume * this.masterVolume) / 10000;
     },
   },
   computed: {
@@ -279,31 +293,31 @@ export default {
     },
   },
   watch: {
-    volumes:{
-      handler(nv) {
-        if(nv.master){
-          console.log(`Master, New: ${nv.master}`);
-        }
-        else if(nv.accent){
-          console.log(`Accent, New: ${nv.accent}`);
-        }
-        else if(nv.quarter){
-          console.log(`Quarter, New: ${nv.quarter}`);
-        }
-        else if(nv.eighth){
-          console.log(`Eighth, New: ${nv.eighth}`);
-        }
-        else if(nv.triplet){
-          console.log(`Triplet, New: ${nv.triplet}`);
-        }
-        else if(nv.sixTeenth){
-          console.log(`SixTeenth, New: ${nv.sixTeenth}`);
-        }
-      },
-      deep: true,
-      immediate: true
-    }
-  }
+    //   volumes:{
+    //     handler(nv) {
+    //       if(nv.master){
+    //         console.log(`Master, New: ${nv.master}`);
+    //       }
+    //       if(nv.accent != this.volumes.accent){
+    //         console.log(`Accent, New: ${nv.accent}`);
+    //       }
+    //       if(nv.quarter != this.volumes.quarter){
+    //         console.log(`Quarter, New: ${nv.quarter}`);
+    //       }
+    //       if(nv.eighth != this.volumes.eighth){
+    //         console.log(`Eighth, New: ${nv.eighth}`);
+    //       }
+    //       if(nv.triplet != this.volumes.triplet){
+    //         console.log(`Triplet, New: ${nv.triplet}`);
+    //       }
+    //       if(nv.sixTeenth != this.volumes.sixTeenth){
+    //         console.log(`SixTeenth, New: ${nv.sixTeenth}`);
+    //       }
+    //     },
+    //     deep: true,
+    //     immediate: true
+    //   }
+  },
 };
 </script>
 
